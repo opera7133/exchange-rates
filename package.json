@@ -15,17 +15,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "date-fns": "^1.30.1",
-    "isomorphic-fetch": "^2.2.1"
+    "date-fns": "^2.29.3",
+    "isomorphic-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^7.24.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "fetch-mock": "^7.3.3",
-    "jsdoc": "^3.6.2",
+    "chai": "^4.3.6",
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "fetch-mock": "^9.11.0",
+    "jsdoc": "^3.6.11",
     "minami": "^1.2.3",
-    "mocha": "^6.1.4"
+    "mocha": "^10.0.0"
   }
 }
