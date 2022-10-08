@@ -13,7 +13,7 @@ const QueryStringBuilder = require('./query-string-builder');
 const currenciesList = require('./currencies');
 const utils = require('./utils');
 
-const API_BASE_URL = 'https://api.ratesapi.io';
+const API_BASE_URL = 'https://api.apilayer.com/exchangerates_data';
 
 /**
  * ExchangeRates
@@ -87,9 +87,9 @@ class ExchangeRates {
     const qs = new QueryStringBuilder();
 
     if (this._isHistoryRequest()) {
-      url += 'history';
-      qs.addParam('start_at', utils.formatDate(this._from));
-      qs.addParam('end_at', utils.formatDate(this._to));
+      url += 'timeseries';
+      qs.addParam('start_date', utils.formatDate(this._from));
+      qs.addParam('end_date', utils.formatDate(this._to));
     } else {
       url += (this._from === 'latest') ? 'latest' : utils.formatDate(this._from);
     }
@@ -220,10 +220,15 @@ class ExchangeRates {
    */
   fetch() {
     this._validate();
-
+    const fetchHeaders = new Headers();
+    fetchHeaders.append("apikey", "");
     // isomorphic-fetch adds `fetch` as a global
     // eslint-disable-next-line no-undef
-    return fetch(this._buildUrl())
+    return fetch(this._buildUrl(), {
+      method: "GET",
+      redirect: "follow",
+      headers: fetchHeaders
+    })
       .then((response) => {
         if (response.status !== 200) {
           throw new ExchangeRatesError(`API returned a bad response (HTTP ${response.status})`);
