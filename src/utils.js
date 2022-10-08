@@ -27,7 +27,7 @@ module.exports = {
    * @return {Date}                   The parsed date in the local time zone
    */
   parseDate: (date) => {
-    const parsedDate = parse(date);
+    const parsedDate = parse(date, "yyyy-MM-dd", new Date());
 
     try {
       isValid(parsedDate);
@@ -46,7 +46,7 @@ module.exports = {
    * @param {Date} date               An instance of Date
    * @return {string}                 The YYYY-MM-DD string
    */
-  formatDate: (date) => format(date, 'YYYY-MM-DD'),
+  formatDate: (date) => format(date, 'yyyy-MM-dd'),
 
   /**
    * Removes trailing forward slashes if they exist
