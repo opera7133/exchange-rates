@@ -221,7 +221,7 @@ class ExchangeRates {
   fetch() {
     this._validate();
     const fetchHeaders = new Headers();
-    fetchHeaders.append("apikey", "");
+    fetchHeaders.append("apikey", process.env.EXCHANGE_API);
     // isomorphic-fetch adds `fetch` as a global
     // eslint-disable-next-line no-undef
     return fetch(this._buildUrl(), {
